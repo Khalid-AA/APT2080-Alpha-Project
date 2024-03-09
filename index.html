@@ -1,11 +1,453 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COLLABORAFÉTE</title>
-</head>
-<body>
+  <title>Alpha Planner</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  </head>
+  
+
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 0;
+      background-color: #F7F7F7;
+    }
+
+    header {
+      background-color: #000000;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header img {
+        max-width: 30%;
+        height: 100px;
+    }
+
+    .whatwedo {
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .whatwedo-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #222;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+    }
+
+    .actions {
+      display: flex;
+    }
+
+    .actions a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .slideshow {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      height: 400px;
+      overflow: hidden;
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+    }
     
-</body>
-</html>
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      width: 100%;
+      height: auto;
+    }
+    
+    .slide.active {
+      opacity: 1;
+    }
+    
+    .slide img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      max-height: 400px;
+    }
+
+    .artwork {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      background-color: #fff;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .artwork img {
+      max-width: 70%;
+    }
+
+    .artwork:hover {
+      transform: translateY(-5px);
+    }
+
+    .shop {
+      padding: 20px;
+      background-color: #F0F0F0;
+    }
+
+    .cart {
+      padding: 20px;
+      background-color: #F0F0F0;
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+    }
+
+    .cart h2 {
+      margin-top: 0;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .cart-item img {
+      max-width: 60px;
+      margin-right: 10px;
+    }
+
+    .cart-total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .cart-empty-message {
+      text-align: center;
+      font-style: italic;
+    }
+
+    .feedback {
+      padding: 20px;
+      background-color: #fff;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .feedback-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #222;
+    }
+
+    .feedback-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .feedback-form input[type="text"],
+    .feedback-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .feedback-form textarea {
+      height: 100px;
+    }
+
+    .feedback-form button {
+      padding: 10px 20px;
+      background-color: #222;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .feedback-form button:hover {
+      background-color: #091b1a;
+    }
+
+    .commission {
+      padding: 20px;
+      background-color: #F0F0F0;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .commission-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #222;
+    }
+
+    .commission-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .commission-form input[type="text"],
+    .commission-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .commission-form textarea {
+      height: 100px;
+    }
+
+    .commission-form button {
+      padding: 10px 20px;
+      background-color: #091b1a;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .commission-form button:hover {
+      background-color: #091b1a;
+    }
+
+    .fadeIn {
+      opacity: 0;
+      animation: fadeInAnimation 1s forwards;
+    }
+
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    footer {
+        background-color: #000000;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        margin-top: auto;
+      }
+  
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+      }
+  
+      .footer-section {
+        flex: 1;
+      }
+  
+      .footer-section h3 {
+        margin-bottom: 10px;
+      }
+  
+      .social-media-icons a {
+        color: #fff;
+        font-size: 20px;
+        margin-right: 10px;
+      }
+  
+      .footer-bottom {
+        background-color: #000000;
+        padding: 10px 0;
+      }
+  
+      .footer-bottom p {
+        margin: 0;
+        font-size: 14px;
+        text-align: center;
+        color: #fff;
+      }
+  </style>
+</head>
+
+<body>
+    <header>
+        <img src="C:\Users\Joyce Achieng\Documents\Art Prints\Art Prints & Bookmarks\archie-art-high-resolution-logo-white-on-black-background cropped.png"  alt="Header Image">
+        
+        <div class="topbar">
+            <h1>Alpha Planner</h1>
+            <div class="actions">
+              <a href="login.html">Login</a>
+              <a href="aboutus.html">About Us</a>
+            </div>
+          </div>
+    </header>
+
+    
+    <div class="slideshow">
+      <div class="slide">
+        <img src="https://i.postimg.cc/sxSzcmh1/pexels-rdne-stock-project-7648472.jpg" alt="Slide 1">
+      </div>
+      <div class="slide">
+        <img src="https://i.postimg.cc/KYzyVxM6/pexels-gustavo-fring-3983697.jpg" alt="Slide 2">
+      </div>
+      <div class="slide">
+        <img src="https://i.postimg.cc/TP7TYpx2/pexels-fauxels-3184418.jpg" alt="Slide 3">
+      </div>
+    </div>
+
+
+    <div class="whatwedo">
+      <h2 class="whatwedo-title">What We Do</h2>
+      <div class="gallery">
+        <div class="artwork">
+          <img src="ART/Print 1 Aesthetic.jpg" alt="Artwork 1">
+          <h3>Collaboration</h3>
+          <p>Be it Zoom meetings, sharing sensitive files or
+            creating guest lists,collaborate with your
+            fellow event organisers to create cohesive
+            and beautiful events. 
+          </p>
+        </div>
+        <div class="artwork">
+          <img src="ART/Chess.jpg" alt="Artwork 2">
+          <h3>Planning</h3>
+          <p>Plan all your events on our cohesive all in
+            one platform. Whether small or large events, we 
+            got you.
+          </p>
+        </div>
+        <div class="artwork">
+            <img src="C:\Users\Joyce Achieng\Documents\Art Prints\Art Prints & Bookmarks\Art print 3- B&W pattern .jpg" alt="Artwork 3">
+            <h3>Budgeting</h3>
+            <p>Come up with actual budgets for you events
+                and how the funds will be distributed using
+                our budget planning tool.
+            </p>
+        </div>
+        <div class="artwork">
+            <img src="ART/flowers.jpg" alt="Artwork 4">
+            <h3>Tracking & Task Distribution</h3>
+            <p>Track your event planning and team progress
+                through our progress tracker. You can 
+                also assign tasks to various team members
+                if applicable. We've got it all!
+            </p>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="feedback">
+      <h2 class="feedback-title">Reach Us Directly</h2>
+      <div class="feedback-form">
+        <input type="text" placeholder="Email">
+        <textarea placeholder="Talk to us"></textarea>
+        <button onclick="submitFeedback()">Submit</button>
+      </div>
+    </div>
+  
+  
+    <script>
+      function submitFeedback() {
+        const name = document.querySelector('.feedback-form input[type="text"]').value;
+        const feedback = document.querySelector('.feedback-form textarea').value;
+  
+        // You can perform any action with the feedback data (e.g., send to a server)
+  
+        // Show a success message
+        showSuccessMessage();
+      }
+
+    </script>
+    <footer>
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: alphagroup@gmail.com</p>
+            <p>Phone: 123-456-7890</p>
+          </div>
+          <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-media-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Alpha Planner/Alpha Group. All rights reserved.</p>
+        </div>
+      </footer>
+
+      <script>
+        lightbox.option({
+          'resizeDuration': 200,
+          'wrapAround': true
+        });
+      </script>
+      <script>
+        const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+  function showSlide() {
+    slides.forEach((slide, index) => {
+      if (index === currentSlide) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+  }
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide();
+  }
+
+  setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+  // Show the first slide initially
+  showSlide();
+
+      </script>
+      
+  </body>
+  </html>
