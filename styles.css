@@ -1,0 +1,294 @@
+/* CSS Styles */
+body {
+font-family: 'Times New Roman', Times, serif;
+margin: 0;
+padding: 0;
+background-color: #F7F7F7;
+}
+
+header {
+background-color: #000000;
+color: #fff;
+padding: 20px;
+text-align: center;
+margin-bottom: 20px;
+}
+
+header img {
+    max-width: 30%;
+    height: 100px;
+}
+
+.whatwedo {
+padding: 20px;
+background-color: #fff;
+}
+
+.whatwedo-title {
+text-align: center;
+margin-bottom: 20px;
+font-size: 28px;
+color: #222;
+}
+
+.gallery {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 20px;
+}
+
+.topbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #000;
+color: #fff;
+padding: 10px 20px;
+}
+
+.actions {
+display: flex;
+}
+
+.actions a {
+color: #fff;
+text-decoration: none;
+margin-left: 20px;
+}
+
+.slideshow {
+position: relative;
+width: 100%;
+max-width: 100%;
+height: 400px;
+overflow: hidden;
+display: flex; 
+justify-content: center; 
+align-items: center; 
+}
+
+.slide {
+position: absolute;
+top: 0;
+left: 0;
+opacity: 0;
+transition: opacity 0.5s ease;
+display: flex; 
+justify-content: center; 
+align-items: center; 
+width: 100%;
+height: auto;
+}
+
+.slide.active {
+opacity: 1;
+}
+
+.slide img {
+width: 100%;
+height: auto;
+object-fit: cover;
+max-height: 400px;
+}
+
+.artwork {
+border: 1px solid #ddd;
+padding: 10px;
+text-align: center;
+background-color: #fff;
+transition: transform 0.3s ease;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.artwork img {
+max-width: 70%;
+}
+
+.artwork:hover {
+transform: translateY(-5px);
+}
+
+.shop {
+padding: 20px;
+background-color: #F0F0F0;
+}
+
+.cart {
+padding: 20px;
+background-color: #F0F0F0;
+margin-top: 20px;
+border-top: 1px solid #ddd;
+}
+
+.cart h2 {
+margin-top: 0;
+}
+
+.cart-item {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.cart-item img {
+max-width: 60px;
+margin-right: 10px;
+}
+
+.cart-total {
+font-weight: bold;
+margin-top: 10px;
+}
+
+.cart-empty-message {
+text-align: center;
+font-style: italic;
+}
+
+.feedback {
+padding: 20px;
+background-color: #fff;
+margin-top: 20px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-title {
+text-align: center;
+margin-bottom: 20px;
+font-size: 28px;
+color: #222;
+}
+
+.feedback-form {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.feedback-form input[type="text"],
+.feedback-form textarea {
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ddd;
+border-radius: 4px;
+}
+
+.feedback-form textarea {
+height: 100px;
+}
+
+.feedback-form button {
+padding: 10px 20px;
+background-color: #222;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 16px;
+}
+
+.feedback-form button:hover {
+background-color: #091b1a;
+}
+
+.commission {
+padding: 20px;
+background-color: #F0F0F0;
+margin-top: 20px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.commission-title {
+text-align: center;
+margin-bottom: 20px;
+font-size: 28px;
+color: #222;
+}
+
+.commission-form {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.commission-form input[type="text"],
+.commission-form textarea {
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ddd;
+border-radius: 4px;
+}
+
+.commission-form textarea {
+height: 100px;
+}
+
+.commission-form button {
+padding: 10px 20px;
+background-color: #091b1a;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 16px;
+}
+
+.commission-form button:hover {
+background-color: #091b1a;
+}
+
+.fadeIn {
+opacity: 0;
+animation: fadeInAnimation 1s forwards;
+}
+
+@keyframes fadeInAnimation {
+0% {
+    opacity: 0;
+    transform: translateY(20px);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+}
+
+.social-media-icons a {
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.footer-bottom {
+    background-color: #000000;
+    padding: 10px 0;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+}
