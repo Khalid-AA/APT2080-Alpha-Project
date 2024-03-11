@@ -1,4 +1,4 @@
-**COLLABORAFÉTE**
+**Alpha Planner**
 
 This project will be based on basic event planner web-app which will manage tasks, share ideas and keep track of budgets in a user-friendly interface.
 
