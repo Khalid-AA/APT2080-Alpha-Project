@@ -18,7 +18,15 @@ This project will be based on basic event planner web-app which will manage task
 
 
 ## Functional Requirement
-<img width="585" alt="image" src="https://github.com/Khalid-AA/APT2080-Alpha-Project/assets/119416718/277ffd4a-6b80-4d1a-b14e-22f3840ce1f7">
+
+Process Orientated  | Information Oriented
+------------- | -------------
+The system should allow users to register and authenticate the users’ credentials securely.  | The system should have the credential information of its users to authenticate.
+The system should be able to allow users to set budgets for events and track expenses.  | The system should contain balance sheets to show and track budget expenditure. 
+The system should allow user to create new events, proving details such as event name, date, location and time.  | The system should have information about the location, date, time and name of the event.
+The system should allow users to generate post event reports.  | The system should contain post event reports including attendance, expenditure and feedback.
+The system should allow users to create and assign tasks related to the event, specifying deadlines, priorities and responsible parties.  | The system should contain information on tasks that have been created and assigned to different parties in relevance to their priorities and deadlines.
+The system should allow users to access social media platforms through the website.  | The system should contain social media platform links for easy access.
 
 
 ## Non-Functional Requirement
