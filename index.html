@@ -17,7 +17,8 @@
         <div class="topbar">
             <h1>Alpha Planner</h1>
             <div class="actions">
-              <a href="login.html">Login</a>
+              <!--<a href="login.html">Login</a>-->
+              <button id="show-login" class="center">Login</button>
               <a href="aboutus.html">About Us</a>
             </div>
           </div>
@@ -100,7 +101,7 @@
       }
 
     </script>
-    <footer>
+      <footer>
         <div class="footer-container">
           <div class="footer-section">
             <h3>Contact</h3>
@@ -126,30 +127,70 @@
           'resizeDuration': 200,
           'wrapAround': true
         });
-      </script>
-      <script>
-        const slides = document.querySelectorAll('.slide');
-  let currentSlide = 0;
-  function showSlide() {
-    slides.forEach((slide, index) => {
-      if (index === currentSlide) {
-        slide.classList.add('active');
-      } else {
-        slide.classList.remove('active');
+    </script>
+
+    <script>
+      const slides = document.querySelectorAll('.slide');
+      let currentSlide = 0;
+      function showSlide() {
+        slides.forEach((slide, index) => {
+          if (index === currentSlide) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
       }
-    });
-  }
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide();
-  }
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide();
+      }
 
-  setInterval(nextSlide, 3000); // Change slide every 3 seconds
+      setInterval(nextSlide, 3000); // Change slide every 3 seconds
 
-  // Show the first slide initially
-  showSlide();
+      // Show the first slide initially
+      showSlide();
 
-      </script>
-      
+    </script>
+
+
+
+    <div class="popup">
+        <div class="close-btn">&times;</div>
+        <div class="form">
+            <h2>Log in</h2>
+            <div class="form-element">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-element">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+            <div class="form-element">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
+            <div class="form-element">
+                <button>Sign in</button>
+            </div>
+            <div class="form-element">
+                <a href="#">Forgot password?</a>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+      document.querySelector("#show-login").addEventListener("click", function(){
+          document.querySelector(".popup").classList.add("active");
+      });
+
+      document.querySelector(".popup .close-btn").addEventListener("click", function(){
+          document.querySelector(".popup").classList.remove("active");
+      });
+  </script>
+
+
   </body>
-  </html>
+</html>
