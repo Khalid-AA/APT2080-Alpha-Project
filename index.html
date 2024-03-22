@@ -7,18 +7,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  </head>
+  
 </head>
-
+  
 <body>
     <header>
-        <img src="C:\Users\Joyce Achieng\Documents\Art Prints\Art Prints & Bookmarks\archie-art-high-resolution-logo-white-on-black-background cropped.png"  alt="Header Image">
+        <img src="https://i.postimg.cc/BtWcZBXR/alpha-planner-high-resolution-logo-white.png"  alt="Header Image">
         
         <div class="topbar">
             <h1>Alpha Planner</h1>
             <div class="actions">
-              <!--<a href="login.html">Login</a>-->
-              <button id="show-login" class="center">Login</button>
+              <a href="#" id="show-login">Login</a>
               <a href="aboutus.html">About Us</a>
             </div>
           </div>
@@ -42,7 +41,7 @@
       <h2 class="whatwedo-title">What We Do</h2>
       <div class="gallery">
         <div class="artwork">
-          <img src="ART/Print 1 Aesthetic.jpg" alt="Artwork 1">
+          <img src="https://i.postimg.cc/8PLSPXqP/pexels-fauxels-3184423.jpg" alt="Artwork 1">
           <h3>Collaboration</h3>
           <p>Be it Zoom meetings, sharing sensitive files or
             creating guest lists,collaborate with your
@@ -51,7 +50,7 @@
           </p>
         </div>
         <div class="artwork">
-          <img src="ART/Chess.jpg" alt="Artwork 2">
+          <img src="https://i.postimg.cc/BvkDpvNg/pexels-jess-bailey-designs-1558691.jpg" alt="Artwork 2">
           <h3>Planning</h3>
           <p>Plan all your events on our cohesive all in
             one platform. Whether small or large events, we 
@@ -59,7 +58,7 @@
           </p>
         </div>
         <div class="artwork">
-            <img src="C:\Users\Joyce Achieng\Documents\Art Prints\Art Prints & Bookmarks\Art print 3- B&W pattern .jpg" alt="Artwork 3">
+            <img src="https://i.postimg.cc/zfFZSLJm/pexels-olia-danilevich-5466785.jpg" alt="Artwork 3">
             <h3>Budgeting</h3>
             <p>Come up with actual budgets for you events
                 and how the funds will be distributed using
@@ -67,7 +66,7 @@
             </p>
         </div>
         <div class="artwork">
-            <img src="ART/flowers.jpg" alt="Artwork 4">
+            <img src="https://i.postimg.cc/fW0MPffZ/pexels-nataliya-vaitkevich-7173040.jpg" alt="Artwork 4">
             <h3>Tracking & Task Distribution</h3>
             <p>Track your event planning and team progress
                 through our progress tracker. You can 
@@ -101,7 +100,7 @@
       }
 
     </script>
-      <footer>
+    <footer>
         <div class="footer-container">
           <div class="footer-section">
             <h3>Contact</h3>
@@ -127,35 +126,32 @@
           'resizeDuration': 200,
           'wrapAround': true
         });
-    </script>
-
-    <script>
-      const slides = document.querySelectorAll('.slide');
-      let currentSlide = 0;
-      function showSlide() {
-        slides.forEach((slide, index) => {
-          if (index === currentSlide) {
-            slide.classList.add('active');
-          } else {
-            slide.classList.remove('active');
-          }
-        });
+      </script>
+      <script>
+        const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+  function showSlide() {
+    slides.forEach((slide, index) => {
+      if (index === currentSlide) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
       }
-      function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide();
-      }
+    });
+  }
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide();
+  }
 
-      setInterval(nextSlide, 3000); // Change slide every 3 seconds
+  setInterval(nextSlide, 3000); // Change slide every 3 seconds
 
-      // Show the first slide initially
-      showSlide();
+  // Show the first slide initially
+  showSlide();
 
-    </script>
-
-
-
-    <div class="popup">
+      </script>
+      
+      <div class="popup">
         <div class="close-btn">&times;</div>
         <div class="form">
             <h2>Log in</h2>
@@ -193,4 +189,4 @@
 
 
   </body>
-</html>
+  </html>
