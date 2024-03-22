@@ -76,6 +76,34 @@
         </div>
       </div>
     </div>
+
+
+
+
+    <div class="task-scheduler">
+      <header class="header">
+        <h1>Task Scheduler</h1>
+      </header>
+      <main>
+        <div class="task-form">
+          <input type="text" id="task" placeholder="Enter task....">
+          <select id="priority">
+            <option value="top">Top Priority</option>
+            <option value="middle">Middle Priority</option>
+            <option value="low">Less Priority</option>
+          </select>
+          <input type="date" id="deadline">
+          <button id="add-task">Add task</button>
+        </div>
+        <div class="note">
+          <p><span style="color: #25b12a; "><b>Green</b></span> means Complete. <span style="color: #eb1717;"><b>Red</b></span> means Incomplete. </p>
+        </div>
+        <div class="task-list" id="task-list">
+          <!--Tasks will be added here dynamically-->
+        </div>
+        <script src="logic.js"></script>
+      </main>
+    </div>
   
   
     <div class="feedback">
