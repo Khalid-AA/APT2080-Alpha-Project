@@ -7,20 +7,61 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.11/index.global.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.11/index.global.min.js'></script>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        editable: true, // Enable editing
+        selectable: true, // Allow selecting dates
+        selectMirror: true, // Show a mirror of the selection for the user
+        dayMaxEvents: true, // Allow "more" link when too many events
+        events: [ // Example events (replace with your data)
+          {
+            title: 'Event 1',
+            start: '2024-03-25'
+          },
+          {
+            title: 'Event 2',
+            start: '2024-03-28'
+          }
+        ],
+        select: function(info) {
+          // Show a form for adding event when a date is selected
+          var title = prompt('Enter event title:');
+          if (title) {
+            calendar.addEvent({
+              title: title,
+              start: info.startStr,
+              end: info.endStr,
+              allDay: info.allDay
+            });
+          }
+        }
+      });
+      calendar.render();
+    });
+
+  </script>
 </head>
   
 <body>
     <header>
-        <img src="https://i.postimg.cc/BtWcZBXR/alpha-planner-high-resolution-logo-white.png"  alt="Header Image">
-        
-        <div class="topbar">
-            <h1>Alpha Planner</h1>
-            <div class="actions">
-              <a href="#" id="show-login">Login</a>
-              <a href="aboutus.html">About Us</a>
-            </div>
-          </div>
+        <div>
+        <img src="https://i.postimg.cc/BtWcZBXR/alpha-planner-high-resolution-logo-white.png" alt="Header Image">
+    </div>
+    <div>
+        <h1>Alpha Planner</h1>
+    </div>
+    <div class="topbar">
+        <div class="actions">
+            <a href="#" id="show-login">Login</a>
+            <a href="aboutus.html">About Us</a>
+        </div>
+    </div>
     </header>
 
     
@@ -78,8 +119,6 @@
     </div>
 
 
-
-
     <div class="task-scheduler">
       <header class="header">
         <h1>Task Scheduler</h1>
@@ -105,6 +144,131 @@
       </main>
     </div>
   
+
+    <!-- Button for adding events -->
+  <div class="add-event-container">
+  <button class="add-event-button" onclick="showAddEventForm()">Add Event</button>
+</div>
+
+
+  <!-- Popup form for adding events -->
+  <div id="add-event-popup" class="popup-event">
+    <div class="close-btn" onclick="hideAddEventForm()">&times;</div>
+    <div class="form">
+      <h2>Add Event</h2>
+      <div class="form-element">
+        <label for="event-title">Title:</label>
+        <input type="text" id="event-title" placeholder="Event Title" required>
+      </div>
+      <div class="form-element">
+        <label for="event-date">Date:</label>
+        <input type="date" id="event-date" required>
+      </div>
+      <div class="form-element">
+        <button onclick="addEvent()">Add Event</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        // Calendar configuration
+      });
+      calendar.render();
+    });
+
+    // Function to show the add event popup form
+    function showAddEventForm() {
+      document.getElementById("add-event-popup").classList.add("active");
+    }
+
+    // Function to hide the add event popup form
+    function hideAddEventForm() {
+      document.getElementById("add-event-popup").classList.remove("active");
+    }
+
+    // Function to add event to the calendar
+    function addEvent() {
+      const title = document.getElementById("event-title").value;
+      const date = document.getElementById("event-date").value;
+
+      if (title && date) {
+        calendar.addEvent({
+          title: title,
+          start: date
+        });
+        hideAddEventForm(); // Hide the popup after adding event
+      } else {
+        alert("Please fill in all fields.");
+      }
+    }
+  </script>
+    
+    <div id="calendar" style="width: 100%; height: 200px;"></div>
+  
+  <!-- Budget Tracker Section -->
+<div id="budget-tracker">
+  <h2>Budget Tracker</h2>
+  <div>
+    <label for="initial-budget">Initial Budget:</label>
+    <input type="number" id="initial-budget" placeholder="Enter initial budget">
+    <button onclick="setInitialBudget()">Set Budget</button>
+  </div>
+  <div>
+    <label for="expense-amount">Expense Amount:</label>
+    <input type="number" id="expense-amount" placeholder="Enter expense amount">
+    <button onclick="addExpense()">Add Expense</button>
+  </div>
+  <div>
+    <h3>Remaining Budget: <span id="remaining-budget">$0.00</span></h3>
+    <h3>Expenses:</h3>
+    <div id="expense-list"></div>
+  </div>
+</div>
+
+<script>
+  let initialBudget = 0;
+  let expenses = [];
+
+  function addExpense() {
+    const expenseAmount = parseFloat(document.getElementById("expense-amount").value);
+    if (!isNaN(expenseAmount)) {
+      expenses.push(expenseAmount);
+      updateUI();
+    }
+  }
+
+  function calculateRemainingBudget() {
+    const totalExpenses = expenses.reduce((acc, expense) => acc + expense, 0);
+    return initialBudget - totalExpenses;
+  }
+
+  function updateUI() {
+    const remainingBudget = calculateRemainingBudget();
+    document.getElementById("remaining-budget").textContent = `$${remainingBudget.toFixed(2)}`;
+
+    const expenseList = document.getElementById("expense-list");
+    expenseList.innerHTML = ""; // Clear existing list
+    expenses.forEach(expense => {
+      const listItem = document.createElement("div");
+      listItem.textContent = `Expense: $${expense.toFixed(2)}`;
+      expenseList.appendChild(listItem);
+    });
+  }
+
+  function setInitialBudget() {
+    const budgetInput = parseFloat(document.getElementById("initial-budget").value);
+    if (!isNaN(budgetInput)) {
+      initialBudget = budgetInput;
+      updateUI();
+    } else {
+      alert("Please enter a valid initial budget amount.");
+    }
+  }
+
+</script>
   
     <div class="feedback">
       <h2 class="feedback-title">Reach Us Directly</h2>
