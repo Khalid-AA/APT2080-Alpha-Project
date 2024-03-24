@@ -638,47 +638,62 @@ main {
 #expense-list {
   margin-top: 20px;
 }
-/*style for about page*/
-.about-section {
-  padding: 50px;
-  text-align: center;
-  background-color: #474e5d;
-  color: white;
-}
+/* Styles for the about us popup */
+.popup-about {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+      display: none;
+    }
 
-.container {
-  padding: 0 16px;
-}
+    .popup-about.active {
+      display: block;
+    }
 
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+    .popup-about .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 15px;
+      height: 15px;
+      background: #888;
+      color: #eee;
+      text-align: center;
+      line-height: 15px;
+      border-radius: 15px;
+      cursor: pointer;
+    }
 
-.title {
-  color: grey;
-}
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
+    .popup-about .card img {
+  max-width: 500px; /* Adjust the maximum width as needed */
   width: 100%;
+  height:10%;
 }
 
-.button:hover {
-  background-color: #555;
+.popup-about {
+  max-height: 80vh; /* Adjust the maximum height as needed */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
 }
 
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
+.popup-about .container {
+  text-align: center; /* Center-align the content */
+}
+
+.popup-about .button {
+  background-color: black; /* Set button background color to black */
+  color: white; /* Set button text color to white */
+  padding: 10px 20px; /* Adjust button padding as needed */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Add margin at the top for spacing */
+}
+
+.popup-about .button:hover {
+  background-color: #333; /* Darken button color on hover */
 }
