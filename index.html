@@ -263,6 +263,17 @@
       document.getElementById("add-event-popup").classList.remove("active");
     }
 
+    // Declare calendar variable in global scope
+var calendar;
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  calendar = new FullCalendar.Calendar(calendarEl, {
+    // Calendar configuration
+  });
+  calendar.render();
+});
+    
     // Function to add event to the calendar
     function addEvent() {
       const title = document.getElementById("event-title").value;
